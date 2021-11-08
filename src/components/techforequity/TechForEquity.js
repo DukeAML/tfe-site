@@ -9,7 +9,7 @@ import withWindowDimensions from '../people/withWindowDimensions';
 import PeopleRow from '../people/PeopleRow';
 
 import { getTFEProjects, getTFEExec, getTFEFellows } from '../../api/api.js';
-const Logo = require('../homepage/images/techforequity.png');
+import Logo from '../homepage/images/techforequity.png';
 
 class TechForEquity extends React.Component {
   state = {
