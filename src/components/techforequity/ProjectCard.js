@@ -18,6 +18,15 @@ import withWindowDimensions from '../people/withWindowDimensions';
 
 import { Link } from 'react-router-dom';
 
+// props fields:
+// img
+// maxFellows
+// fellows
+// position
+// title
+// proj_title
+// description
+
 class ProjectCard extends React.Component {
   state = { expanded: false };
 
