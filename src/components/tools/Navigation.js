@@ -85,31 +85,22 @@ class Navigation extends React.Component {
               margin: 0,
               justifyContent: 'center',
             }}>
-            <Col xs="1" style={verticalAlign}>
-              <Link to="/">
-                <img
-                  alt="Home"
-                  src={require('../homepage/images/DAML_Full_Grey_Transparent.svg')}
-                  width="50"
-                  height="50"
-                />
+            <Col xs="2" style={verticalAlign}>
+              <Link to="/" className="nav-link-col">
+                Home
               </Link>
             </Col>
-            <Col xs="3" style={verticalAlign}>
+            <Col xs="2" style={verticalAlign}>
               <Link to="/projects" className="nav-link-col">
                 Projects
               </Link>
             </Col>
-            <Col xs="3" style={verticalAlign}>
+            <Col xs="2" style={verticalAlign}>
               <Link to="/people" className="nav-link-col">
                 People
               </Link>
             </Col>
-            <Col xs="3" style={verticalAlign}>
-              <Link to="/tfe" className="nav-link-col">
-                TFE
-              </Link>
-            </Col>
+      
           </Row>
         </Container>
       </center>
