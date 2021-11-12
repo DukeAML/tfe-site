@@ -7,8 +7,9 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import withWindowDimensions from '../people/withWindowDimensions';
-
+import Logo from '../homepage/images/techforequity.png';
 import MobileNavigation from './MobileNavigation';
+
 
 class Navigation extends React.Component {
   constructor() {
@@ -85,17 +86,27 @@ class Navigation extends React.Component {
               margin: 0,
               justifyContent: 'center',
             }}>
-            <Col xs="2" style={verticalAlign}>
+              <Col xs="1" style={verticalAlign}>
+              <Link to="/">
+                <img
+                  alt="Home"
+                  src={Logo}
+                  width="50"
+                  height="50"
+                />
+              </Link>
+              </Col>
+            <Col xs="3" style={verticalAlign}>
               <Link to="/" className="nav-link-col">
                 Home
               </Link>
             </Col>
-            <Col xs="2" style={verticalAlign}>
+            <Col xs="3" style={verticalAlign}>
               <Link to="/projects" className="nav-link-col">
                 Projects
               </Link>
             </Col>
-            <Col xs="2" style={verticalAlign}>
+            <Col xs="3" style={verticalAlign}>
               <Link to="/people" className="nav-link-col">
                 People
               </Link>

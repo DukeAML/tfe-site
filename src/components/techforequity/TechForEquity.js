@@ -168,25 +168,17 @@ class TechForEquity extends React.Component {
                 <Col lg={8} sm={12} align="left">
                   <div className="title"> Tech For Equity </div>
                   <p>
-                    The Tech for Equity Fellowship, an initiative by Duke
-                    Applied Machine Learning, is a student-run summer internship
-                    program that aims to bridge the gap between student
-                    technologists and non-profit organizations. The program
-                    provides Duke students with the opportunity to engage with
-                    community-based organizations, develop tech-driven solutions
-                    to pressing social issues, and connect with
-                    tech-for-social-change leaders at the ACLU, Vera Institute
-                    of Justice, and more.
-                    <br />
-                    <br />
-                    2021 Fellowship Dates: May 24 - July 30, 2021
-                    <br />
-                    <br />
-                    The Application for the 2021 Fellowship is now closed. Be
-                    sure to out for new opportunities during the school year and
-                    future summers!
-                    <br />
-                    <br />
+                  The Technology for Equity Fellowship, an initiative by Duke Applied Machine Learning, is a summer internship program that seeks to bridge the gap between enthusiastic Duke student technologists and equitable organizations. The program will provide students a remote tech summer internship with competitive stipend at established community organizations/research centers and summer programming with speaker series and chances to connect with tech and policy leaders at ACLU, Vera Institute of Justice, and more.
+                  <br/>
+                  </p>
+                  <div className="details-title"> About Us </div>
+                  <p>The Tech for Equity Fellowship is a Duke Applied Machine Learning initiative that aims to match talented Duke engineers with community-based organizations and/or non-profits. The program provides remote summer internships in software engineering and data science with community clients or policy research centers. Students will also have the opportunity to connect with leading tech and policy innovators at the ACLU, Vera Institute of Justice, and other high-impact organizations. 
+                  </p>
+                  <br/>
+                  <div className="details-title"> Our Mission </div>
+                  <p>The mission of Tech for Equity is to bridge the gap between community-based organizations and Duke students—such as future software engineers, data scientists, and public policymakers. We build partnerships with organizations and communities focused on developing remedies to address social inequity. Tech for Equity will seek to accomplish this mission by arranging a summer fellowship, running a semester-long externship program, teaching a house course, and hosting events and discussions focused on the ethical implications of technology. 
+                  <br/>
+                  <br/>
                     <Button
                       className="theme-button"
                       style={{
@@ -205,49 +197,9 @@ class TechForEquity extends React.Component {
                   <br />
                 </Col>
               </Row>
-              <div className="title"> 2021 Projects </div>
-              <br />
             </center>
 
-            <Row
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-              }}>
-              {this.state.loadingProjects ? (
-                <div
-                  style={{ height: '10rem', padding: '10rem', margin: 'auto' }}>
-                  <Spinner animation="grow" size="md" />
-                </div>
-              ) : (
-                projectCards
-              )}
-            </Row>
           </Container>
-
-          <br />
-          <Container>
-            <center className="title"> Team Members </center>
-            <hr />
-          </Container>
-
-          <br />
-          <center style={{ width: '100vw', padding: 0, margin: 0 }}>
-            {memberGrid}
-          </center>
-
-          <br />
-          <br />
-          <Container>
-            <center className="title"> Fellows </center>
-            <hr />
-          </Container>
-          <br />
-          <center style={{ width: '100vw', padding: 0, margin: 0 }}>
-            {fellowGrid}
-          </center>
-
-          <br />
           <Container>
             <center className="title"> Sponsors </center>
             <br />
