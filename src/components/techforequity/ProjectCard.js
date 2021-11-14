@@ -1,21 +1,12 @@
 import React from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  OverlayTrigger,
-  Tooltip,
-  Card,
-} from 'react-bootstrap';
+import { Row, Button, Col, Card } from 'react-bootstrap';
 
-import Navigation from '../tools/Navigation';
 import withWindowDimensions from '../people/withWindowDimensions';
-
-import { Link } from 'react-router-dom';
+import Person from '../projects/ProjectPerson';
 
 // props fields:
 // img
-// maxFellows
+// isFeatured
 // fellows
 // position
 // title
@@ -23,129 +14,165 @@ import { Link } from 'react-router-dom';
 // description
 
 class ProjectCard extends React.Component {
-  state = { expanded: false };
+  state = { featureText: '' };
+
+  makePeopleRow(people) {
+    if (!people) {
+      return;
+    }
+    return people.map((person, key, index) => (
+      <Person key={key} name={person.name} img={person.img} />
+    ));
+  }
 
   render() {
     const imageSrc = this.props.img;
-
-    let fellows = [];
-    let pWidth = 12 / this.props.maxFellows;
-    for (let i = 0; i < this.props.maxFellows; i++) {
-      fellows.push(
-        <Col
-          xl={pWidth}
-          sm={pWidth}
-          xs={pWidth}
-          md={pWidth}
-          style={{
-            backgroundColor: i < this.props.fellows ? '#d0f0fd' : '#d1d1d1',
-            width: '100%',
-            borderRight:
-              i < this.props.maxFellows - 1 ? '1px dashed black' : '',
-          }}>
-          <center>{i + 1}</center>
-        </Col>,
-      );
-    }
 
     let teamButtons = [];
     let teamAbrv = {
       'Data Analytics/Science': 'DS',
       'Software Engineering/Technology': 'SWE',
-      Design: 'De',
+      Design: 'DSN',
       'Project Management': 'PM',
-      Research: 'Re',
+      Research: 'R&D',
     };
     let teamColors = {
       SWE: '#d0f0fd',
       DS: '#d1f7c4',
       PM: '#cfdfff',
-      Re: '#f7dfd3',
-      De: '#FFF',
+      "R&D": '#f7dfd3',
+      DSN: '#FFF',
     };
     if (this.props.position) {
       teamButtons = this.props.position.map((team, index) => {
         return (
-          <OverlayTrigger
-            key={team}
-            placement={'top'}
-            overlay={<Tooltip id={`tooltip-top`}>{team}</Tooltip>}>
-            <div
-              key={index}
-              style={{
-                backgroundColor: teamColors[teamAbrv[team]],
-                borderRadius: '100%',
-                color: '#050404',
-                display: 'grid',
-                placeItems: 'center',
-                width: '2.5rem',
-                height: '2.5rem',
-                border: 'none',
-                marginRight: '.5rem',
-              }}
-              overlay={<Tooltip id="tooltip-disabled">Tooltip!</Tooltip>}>
-              {teamAbrv[team]}
-            </div>
-          </OverlayTrigger>
+          <div
+            class={'team-button'}
+            key={index}
+            style={{ backgroundColor: teamColors[teamAbrv[team]] }}>
+            {teamAbrv[team]}
+          </div>
         );
       });
     }
 
+    // kind of broken logic
+    if (this.props.isFeatured) {
+      setTimeout(
+        () => this.setState({ featureText: this.props.description }),
+        1,
+      );
+    } else if (this.state.featureText) {
+     this.setState({ featureText: '' });
+    }
+
+    let cardStyle = {
+      width: '100%',
+      //maxHeight: "480px", // Implemented for slide modality, messes up with person icons
+    };
+
+    let window = this.props.windowWidth;
+    let padding;
+
+    // dynamically determine left and right padding around people grid
+    if (window >= 992) {
+      // lg or xl
+      padding = 2;
+    } else {
+      // xs
+      padding = 1;
+    }
+
+    // we dont currently support this on the tfe site
+    // so it will just be undefined
+    let columns = this.makePeopleRow(this.props.members);
+
     return (
       <div
         style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
-        <Card style={{ width: '100%' }}>
-          <div style={{}}>
-            <center>
-              <img
-                src={imageSrc}
-                style={{ width: '100%', maxHeight: '10rem' }}
-              />
-            </center>
-          </div>
-          <Card.Body className="tfe-project-card">
-            <Card.Title style={{ padding: 0 }}>
-              <h4>{this.props.title}</h4>
-            </Card.Title>
-
-            <Card.Text
-              style={{
-                padding: '1rem 0 0 0',
-                overflow: 'auto',
-              }}>
-              <a style={{ fontWeight: 'bold' }}>Project Title: </a>
-              {this.props.proj_title}
-            </Card.Text>
-
-            <Card.Text
-              style={{
-                padding: '1rem 0',
-                overflow: 'auto',
-                maxHeight: '14rem',
-              }}>
-              {this.props.description}
-            </Card.Text>
+        <Card style={cardStyle}>
+          <Card.Body className="project-card">
             <div
               style={{
+                width: '48px',
+                height: '48px',
+                marginRight: '1rem',
                 position: 'absolute',
-                right: '1rem',
-                bottom: '1rem',
-              }}></div>
-            <Card.Text style={{ padding: '1rem 0' }}>
-              <b>Fellows: </b>
-              {this.props.fellows}
-            </Card.Text>
-            <Card.Text style={{ padding: '.5rem 0' }}>
-              <b>Positions: </b>
-              <div
+                left: '1rem',
+                top: '1rem',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                display: 'flex',
+              }}>
+              {' '}
+              <img
+                src={imageSrc}
                 style={{
-                  marginTop: '.5rem',
-                  display: 'flex',
-                  flexDirection: 'row',
-                }}>
-                {teamButtons}
-              </div>
+                  maxWidth: '48px',
+                  maxHeight: '48px',
+                }}
+              />
+            </div>
+
+            <Card.Title
+              style={{
+                padding: 0,
+                marginLeft: '48px',
+                backgroundColor: '#fff',
+                paddingLeft: '1rem',
+                minHeight: '48px',
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}>
+              <h4 style={{ verticalAlign: 'middle' }}>{this.props.projTitle}</h4>
+            </Card.Title>
+            <hr />
+
+            <Card.Text style={{ padding: '1rem 0 0 0' }}>
+              {this.props.shortDesc
+                ? this.props.shortDesc
+                : "Check out 'See More' for more information."}
             </Card.Text>
+
+            <Card.Text
+              style={{
+                padding: '1rem 0 1rem 0',
+                overflow: 'hidden',
+                whiteSpace: 'pre-wrap',
+                maxHeight: '280px',
+                overflowY: 'auto',
+              }}>
+              {this.state.featureText}
+            </Card.Text>
+            {this.state.featureText && (
+              <div style={{ paddingBottom: '.4rem' }}>
+                {' '}
+                {this.props.members && (
+                  <div style={{ marginBottom: '.8rem', fontSize: '1rem' }}>
+                    Team Members:
+                  </div>
+                )}
+                <Row
+                  ref={(node) => (this.peopleDisplay = node)}
+                  style={{ margin: `0 ${padding}%` }}>
+                  {columns}
+                </Row>
+              </div>
+            )}
+
+            <div class="team-buttons">{teamButtons}</div>
+            <div
+              style={{ position: 'absolute', right: '1rem', bottom: '1rem' }}>
+              <Button
+                className="theme-button"
+                onClick={() => {
+                  console.log(this.props.index);
+                  this.props.callback(this.props.index);
+                }}>
+                {this.props.isFeatured ? 'Close' : 'See more'}
+              </Button>
+            </div>
           </Card.Body>
         </Card>
       </div>
@@ -153,4 +180,4 @@ class ProjectCard extends React.Component {
   }
 }
 
-export default ProjectCard;
+export default withWindowDimensions(ProjectCard);

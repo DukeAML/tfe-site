@@ -6,7 +6,6 @@ import Footer from '../tools/Footer';
 
 import ProjectCard from './ProjectCard';
 import withWindowDimensions from '../people/withWindowDimensions';
-import PeopleRow from '../people/PeopleRow';
 
 import { getTFEProjects } from '../../api/api.js';
 
@@ -14,6 +13,8 @@ class TFEProjects extends React.Component {
   state = {
     projects: [],
     loadingProjects: true,
+    loadingPeople: true,
+    selectedKey: -1,
   };
 
   componentDidMount = async () => {
@@ -23,9 +24,14 @@ class TFEProjects extends React.Component {
     this.setState({ projects: projects, loadingProjects: false });
   };
 
+  selectedCallback = (key) => {
+    this.setState({ selectedKey: key === this.state.selectedKey ? -1 : key });
+  };
+
   render() {
     let window = this.props.windowWidth;
-    let padding;
+    let padding,
+      renderPeople = true;
 
     // dynamically determine left and right padding around projects grid
     if (window >= 992) {
@@ -37,23 +43,39 @@ class TFEProjects extends React.Component {
     } else if (window >= 576) {
       // s
       padding = 10;
+      renderPeople = false;
     } else {
       // xs
       padding = 10;
+      renderPeople = false;
     }
+    renderPeople &= !this.state.loadingPeople;
 
     const projectCards = this.state.projects.map((project, key) => (
-      <Col lg={4} md={6} style={{ padding: '1rem' }}>
+      <Col
+        lg={
+          4 +
+          (key === this.state.selectedKey ||
+          (key + 1 === this.state.selectedKey && key + (1 % 3)) === 2
+            ? 4
+            : 0)
+          // This logic sucks but basically it handles overflow cases
+        }
+        md={6 + (key === this.state.selectedKey ? 6 : 0)}
+        style={{ padding: '1rem' }}>
         <ProjectCard
           key={key}
+          index={key}
           title={project.Organization}
           description={project.Project_Details}
-          proj_title={project.Project_Title}
+          projTitle={project.Project_Title}
           fellows={project['Team Size']}
           position={project.Position}
           img={project.Picture}
           link={project.link}
-          maxFellows={3} // Maximum number of fellows per project in this class
+          isFeatured={key === this.state.selectedKey}
+          shortDesc={project.short_description}
+          callback={this.selectedCallback}
         />
       </Col>
     ));
