@@ -1,9 +1,8 @@
 import React from 'react';
-import {  Row, Button, Card } from 'react-bootstrap';
+import { Row, Button, Card } from 'react-bootstrap';
 
 import withWindowDimensions from '../people/withWindowDimensions';
 import Person from './ProjectPerson';
-
 
 // props fields
 // img
@@ -11,7 +10,7 @@ import Person from './ProjectPerson';
 // isFeatured : bool
 // description : str
 // windowWidth : int (wrap withWindowDimensions)
-// members 
+// members
 // Title : str
 // shortDescription : str
 // index : int

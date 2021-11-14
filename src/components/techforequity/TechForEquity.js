@@ -4,99 +4,15 @@ import { Container, Row, Col, Spinner, Button } from 'react-bootstrap';
 import Navigation from '../tools/Navigation';
 import Footer from '../tools/Footer';
 
-import ProjectCard from './ProjectCard';
 import withWindowDimensions from '../people/withWindowDimensions';
-import PeopleRow from '../people/PeopleRow';
-
-import { getTFEProjects, getTFEExec, getTFEFellows } from '../../api/api.js';
 import Logo from '../homepage/images/techforequity.png';
 
 class TechForEquity extends React.Component {
-  state = {
-    projects: [],
-    loadingProjects: true,
-    members: [],
-    loadingMembers: true,
-    fellows: [],
-    loadingFellows: true,
-  };
+  state = {};
 
   componentDidMount = async () => {
-    // Load and update projects
-    const projects = await getTFEProjects();
-    console.log(projects);
-    this.setState({ projects: projects, loadingProjects: false });
-
-    // Load, clean, and update member
-    const members = await getTFEExec();
-    let pkey = {
-      Headshot: 'Photo',
-    };
-    members.forEach((member) => {
-      for (const [key, val] of Object.entries(member)) {
-        member[pkey[key] || key] = val;
-      }
-    });
-    this.setState({ members: members, loadingMembers: false });
-
-    // Load, append, and update fellows
-    const fellows = await getTFEFellows();
-
-    // Projects as key value
-    let projectTable = {};
-    projects.forEach((project) => {
-      projectTable[project.id] = project.Project_Title;
-    });
-    console.log(fellows);
-    // Add project to user description
-    fellows.forEach((fellow) => {
-      for (const [key, val] of Object.entries(fellow)) {
-        fellow[pkey[key] || key] = val;
-      }
-      fellow['Team'] = projectTable[fellow.Team[0]];
-    });
-
-    this.setState({ fellows: fellows, loadingFellows: false });
+    // load animation?
   };
-
-  // From ../people/PeoplePage.js
-  makePeopleGrid(people, window) {
-    // determine number of people per row based on bootstrap screen breakpoints
-    let cols;
-    if (window >= 992) {
-      // lg or xl; 4 people per row
-      cols = 4;
-    } else if (window >= 768) {
-      // m; 4 people per row
-      cols = 3;
-    } else if (window >= 576) {
-      // xs; 2 people per row
-      cols = 2;
-    } else {
-      //xs; 1 person per row
-      cols = 1;
-    }
-
-    const numRows = Math.ceil(people.length / cols);
-    let rowArrays = [];
-
-    // make each row, add details section below
-    for (let i = 0; i < numRows * cols; i += cols) {
-      rowArrays[i] = people.slice(i, i + cols);
-    }
-
-    let result = rowArrays.map((row, index) => (
-      <PeopleRow people={row} key={index} />
-    ));
-
-    return this.state.loadingProjects ? (
-      <div style={{ height: '10rem', padding: '3rem' }}>
-        <Spinner animation="grow" size="md" />
-      </div>
-    ) : (
-      result
-    );
-  }
 
   render() {
     let window = this.props.windowWidth;
@@ -117,40 +33,6 @@ class TechForEquity extends React.Component {
       padding = 10;
     }
 
-    const memberGrid = this.makePeopleGrid(
-      this.state.members,
-      this.props.windowWidth,
-    );
-
-    const fellowGrid = this.makePeopleGrid(
-      this.state.fellows,
-      this.props.windowWidth,
-    );
-
-    const projectCards = this.state.projects.map((project, key) => (
-      <Col lg={4} md={6} style={{ padding: '1rem' }}>
-        <ProjectCard
-          key={key}
-          title={project.Organization}
-          description={project.Project_Details}
-          proj_title={project.Project_Title}
-          fellows={project['Team Size']}
-          position={project.Position}
-          img={project.Picture}
-          link={project.link}
-          maxFellows={3} // Maximum number of fellows per project in this class
-        />
-        {/* <ProjectCard
-          key={key}
-          uid={project.uid}
-          link={`/phoenix/${project.uid}`}
-          title={project.title}
-          description={project.description}
-          img={project.imageLink}
-        /> */}
-      </Col>
-    ));
-
     return (
       <div>
         <Navigation />
@@ -168,17 +50,44 @@ class TechForEquity extends React.Component {
                 <Col lg={8} sm={12} align="left">
                   <div className="title"> Tech For Equity </div>
                   <p>
-                  The Technology for Equity Fellowship, an initiative by Duke Applied Machine Learning, is a summer internship program that seeks to bridge the gap between enthusiastic Duke student technologists and equitable organizations. The program will provide students a remote tech summer internship with competitive stipend at established community organizations/research centers and summer programming with speaker series and chances to connect with tech and policy leaders at ACLU, Vera Institute of Justice, and more.
-                  <br/>
+                    The Technology for Equity Fellowship, an initiative by Duke
+                    Applied Machine Learning, is a summer internship program
+                    that seeks to bridge the gap between enthusiastic Duke
+                    student technologists and equitable organizations. The
+                    program will provide students a remote tech summer
+                    internship with competitive stipend at established community
+                    organizations/research centers and summer programming with
+                    speaker series and chances to connect with tech and policy
+                    leaders at ACLU, Vera Institute of Justice, and more.
+                    <br />
                   </p>
                   <div className="details-title"> About Us </div>
-                  <p>The Tech for Equity Fellowship is a Duke Applied Machine Learning initiative that aims to match talented Duke engineers with community-based organizations and/or non-profits. The program provides remote summer internships in software engineering and data science with community clients or policy research centers. Students will also have the opportunity to connect with leading tech and policy innovators at the ACLU, Vera Institute of Justice, and other high-impact organizations. 
+                  <p>
+                    The Tech for Equity Fellowship is a Duke Applied Machine
+                    Learning initiative that aims to match talented Duke
+                    engineers with community-based organizations and/or
+                    non-profits. The program provides remote summer internships
+                    in software engineering and data science with community
+                    clients or policy research centers. Students will also have
+                    the opportunity to connect with leading tech and policy
+                    innovators at the ACLU, Vera Institute of Justice, and other
+                    high-impact organizations.
                   </p>
-                  <br/>
+                  <br />
                   <div className="details-title"> Our Mission </div>
-                  <p>The mission of Tech for Equity is to bridge the gap between community-based organizations and Duke students—such as future software engineers, data scientists, and public policymakers. We build partnerships with organizations and communities focused on developing remedies to address social inequity. Tech for Equity will seek to accomplish this mission by arranging a summer fellowship, running a semester-long externship program, teaching a house course, and hosting events and discussions focused on the ethical implications of technology. 
-                  <br/>
-                  <br/>
+                  <p>
+                    The mission of Tech for Equity is to bridge the gap between
+                    community-based organizations and Duke students—such as
+                    future software engineers, data scientists, and public
+                    policymakers. We build partnerships with organizations and
+                    communities focused on developing remedies to address social
+                    inequity. Tech for Equity will seek to accomplish this
+                    mission by arranging a summer fellowship, running a
+                    semester-long externship program, teaching a house course,
+                    and hosting events and discussions focused on the ethical
+                    implications of technology.
+                    <br />
+                    <br />
                     <Button
                       className="theme-button"
                       style={{
@@ -198,7 +107,6 @@ class TechForEquity extends React.Component {
                 </Col>
               </Row>
             </center>
-
           </Container>
           <Container>
             <center className="title"> Sponsors </center>

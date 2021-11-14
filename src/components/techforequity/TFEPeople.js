@@ -1,22 +1,20 @@
 import React from 'react';
-import { Container, Row, Col, Spinner, Button } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 
 import Navigation from '../tools/Navigation';
 import Footer from '../tools/Footer';
 
-import ProjectCard from './ProjectCard';
 import withWindowDimensions from '../people/withWindowDimensions';
 import PeopleRow from '../people/PeopleRow';
 
 import { getTFEProjects, getTFEExec, getTFEFellows } from '../../api/api.js';
-import Logo from '../homepage/images/techforequity.png';
 
 class TFEPeople extends React.Component {
   state = {
     projects: [],
     loadingProjects: true,
-    members: [],
-    loadingMembers: true,
+    exec: [],
+    loadingExec: true,
     fellows: [],
     loadingFellows: true,
   };
@@ -27,17 +25,17 @@ class TFEPeople extends React.Component {
     console.log(projects);
     this.setState({ projects: projects, loadingProjects: false });
 
-    // Load, clean, and update member
-    const members = await getTFEExec();
+    // Load, clean, and update exec team
+    const exec = await getTFEExec();
     let pkey = {
       Headshot: 'Photo',
     };
-    members.forEach((member) => {
+    exec.forEach((member) => {
       for (const [key, val] of Object.entries(member)) {
         member[pkey[key] || key] = val;
       }
     });
-    this.setState({ members: members, loadingMembers: false });
+    this.setState({ exec: exec, loadingExec: false });
 
     // Load, append, and update fellows
     const fellows = await getTFEFellows();
@@ -117,8 +115,8 @@ class TFEPeople extends React.Component {
       padding = 10;
     }
 
-    const memberGrid = this.makePeopleGrid(
-      this.state.members,
+    const execGrid = this.makePeopleGrid(
+      this.state.exec,
       this.props.windowWidth,
     );
 
@@ -126,30 +124,6 @@ class TFEPeople extends React.Component {
       this.state.fellows,
       this.props.windowWidth,
     );
-
-    const projectCards = this.state.projects.map((project, key) => (
-      <Col lg={4} md={6} style={{ padding: '1rem' }}>
-        <ProjectCard
-          key={key}
-          title={project.Organization}
-          description={project.Project_Details}
-          proj_title={project.Project_Title}
-          fellows={project['Team Size']}
-          position={project.Position}
-          img={project.Picture}
-          link={project.link}
-          maxFellows={3} // Maximum number of fellows per project in this class
-        />
-        {/* <ProjectCard
-          key={key}
-          uid={project.uid}
-          link={`/phoenix/${project.uid}`}
-          title={project.title}
-          description={project.description}
-          img={project.imageLink}
-        /> */}
-      </Col>
-    ));
 
     return (
       <div>
@@ -162,7 +136,7 @@ class TFEPeople extends React.Component {
 
           <br />
           <center style={{ width: '100vw', padding: 0, margin: 0 }}>
-            {memberGrid}
+            {execGrid}
           </center>
 
           <br />
@@ -177,7 +151,6 @@ class TFEPeople extends React.Component {
           </center>
 
           <br />
-          
 
           <Footer style={{ margin: '2rem 0 0 0' }} />
         </Container>
