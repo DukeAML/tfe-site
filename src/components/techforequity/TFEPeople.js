@@ -87,8 +87,10 @@ class TFEPeople extends React.Component {
       <PeopleRow people={row} key={index} />
     ));
 
-    return this.state.loadingProjects ? (
-      <div style={{ height: '10rem', padding: '3rem' }}>
+    return this.state.loadingFellows ? (
+      <div style={{ height: '10rem', padding: '2rem', margin: 'auto' }}>
+        <Spinner animation="grow" size="md" style={{ marginRight: '3rem' }} />
+        <Spinner animation="grow" size="md" style={{ marginRight: '3rem' }} />
         <Spinner animation="grow" size="md" />
       </div>
     ) : (
@@ -128,7 +130,7 @@ class TFEPeople extends React.Component {
     return (
       <div>
         <Navigation />
-        <Container fluid style={{ padding: 0 }}>
+        <Container fluid style={{ padding: 0, minHeight: '75vh' }}>
           <Container>
             <center className="title"> Executive Team </center>
             <hr />
@@ -151,9 +153,8 @@ class TFEPeople extends React.Component {
           </center>
 
           <br />
-
-          <Footer style={{ margin: '2rem 0 0 0' }} />
         </Container>
+        <Footer style={{ margin: '2rem 0 0 0' }} />
       </div>
     );
   }
