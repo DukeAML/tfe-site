@@ -7,11 +7,13 @@ import Footer from '../tools/Footer';
 import withWindowDimensions from '../people/withWindowDimensions';
 import Logo from '../homepage/images/techforequity.png';
 
+//Tech for Equity overall Website
 class TechForEquity extends React.Component {
   state = {};
 
   componentDidMount = async () => {
     // load animation?
+    
   };
 
   render() {
