@@ -6,6 +6,7 @@ import Footer from '../tools/Footer';
 
 import withWindowDimensions from '../people/withWindowDimensions';
 import Logo from '../homepage/images/techforequity.png';
+import Animation from "./animation/Animation";
 
 class TechForEquity extends React.Component {
   state = {};
@@ -36,6 +37,7 @@ class TechForEquity extends React.Component {
     return (
       <div>
         <Navigation />
+        <Animation />
         <Container fluid style={{ padding: 0 }}>
           <Container style={{ minHeight: '85vh', padding: `0 ${padding}%` }}>
             <center>

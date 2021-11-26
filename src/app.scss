@@ -420,6 +420,15 @@ div.row {
   margin: 1rem;
 }
 
+.animation {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100vw;
+  height: 60vh;
+  background-color: $main-white;
+}
+
 div.col-lg-1,
 div.col-lg-10,
 div.col-lg-11,
