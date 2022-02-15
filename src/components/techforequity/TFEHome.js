@@ -8,7 +8,8 @@ import withWindowDimensions from '../people/withWindowDimensions';
 import Logo from '../homepage/images/techforequity.png';
 import Animation from "./animation/Animation";
 
-class TechForEquity extends React.Component {
+//Tech for Equity overall Website
+class TFEHome extends React.Component {
   state = {};
 
   componentDidMount = async () => {
@@ -41,7 +42,7 @@ class TechForEquity extends React.Component {
         <Container fluid style={{ padding: 0 }}>
           <Container style={{ minHeight: '85vh', padding: `0 ${padding}%` }}>
             <center>
-              <Row style={{ marginTop: 20 }}>
+              <Row style={{ marginTop: 24 }}>
                 <Col lg={4} sm={12}>
                   <img
                     src={Logo}
@@ -108,9 +109,38 @@ class TechForEquity extends React.Component {
                   <br />
                 </Col>
               </Row>
+              <Row
+                style={{ padding: 12, border: '2px solid #232323' }}
+                align="left">
+                <div className="details-title"> The TFE Fellowship </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                  <br />
+                  <br />
+                  <Button
+                    className="theme-button"
+                    style={{
+                      marginBottom: '1rem',
+                      backgroundColor: '#2e755d',
+                    }}>
+                    <a
+                      href="https://airtable.com/shrTk1dz4VwidpwAc"
+                      target="_blank"
+                      style={{ color: 'white' }}>
+                      {' '}
+                      Apply to the Fellowship!
+                    </a>
+                  </Button>
+                </p>
+              </Row>
             </center>
-          </Container>
-          <Container>
             <center className="title"> Sponsors </center>
             <br />
             <center> A huge thank you to all of our sponsors! </center>
@@ -160,4 +190,4 @@ class TechForEquity extends React.Component {
     );
   }
 }
-export default withWindowDimensions(TechForEquity);
+export default withWindowDimensions(TFEHome);

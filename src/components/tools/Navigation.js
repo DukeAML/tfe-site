@@ -1,15 +1,9 @@
 import React from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Image,
-} from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import withWindowDimensions from '../people/withWindowDimensions';
 import Logo from '../homepage/images/techforequity.png';
 import MobileNavigation from './MobileNavigation';
-
 
 class Navigation extends React.Component {
   constructor() {
@@ -49,10 +43,10 @@ class Navigation extends React.Component {
 
     if (window >= 1200) {
       //xl
-      padding = 28;
+      padding = 20;
     } else if (window >= 992) {
       // lg
-      padding = 22;
+      padding = 16;
     } else if (window >= 768) {
       // m
       padding = 10;
@@ -78,40 +72,39 @@ class Navigation extends React.Component {
             padding: `0 ${padding}%`,
             paddingTop: '0.5rem',
             backgroundColor: this.props.backgroundColor || '#f2f4f5',
-            maxWidth: '100vw',
           }}>
           <Row
             style={{
               padding: 0,
               margin: 0,
               justifyContent: 'center',
+              maxWidth: '100vw',
             }}>
-              <Col xs="1" style={verticalAlign}>
+            <Col xs="1" style={verticalAlign}>
               <Link to="/">
-                <img
-                  alt="Home"
-                  src={Logo}
-                  width="50"
-                  height="50"
-                />
+                <img alt="Home" src={Logo} width="42" height="42" />
               </Link>
-              </Col>
-            <Col xs="3" style={verticalAlign}>
+            </Col>
+            <Col xs="2" style={verticalAlign}>
               <Link to="/" className="nav-link-col">
                 Home
               </Link>
             </Col>
-            <Col xs="3" style={verticalAlign}>
+            <Col xs="2" style={verticalAlign}>
               <Link to="/projects" className="nav-link-col">
                 Projects
               </Link>
             </Col>
-            <Col xs="3" style={verticalAlign}>
+            <Col xs="2" style={verticalAlign}>
               <Link to="/people" className="nav-link-col">
                 People
               </Link>
             </Col>
-      
+            <Col xs="2" style={verticalAlign}>
+              <Link to="/fellowship" className="nav-link-col">
+                Fellowship
+              </Link>
+            </Col>
           </Row>
         </Container>
       </center>

@@ -98,8 +98,16 @@ class TFEProjects extends React.Component {
               {this.state.loadingProjects ? (
                 <div
                   style={{ height: '10rem', padding: '2rem', margin: 'auto' }}>
-                  <Spinner animation="grow" size="md" />
-                  <Spinner animation="grow" size="md" />
+                  <Spinner
+                    animation="grow"
+                    size="md"
+                    style={{ marginRight: '3rem' }}
+                  />
+                  <Spinner
+                    animation="grow"
+                    size="md"
+                    style={{ marginRight: '3rem' }}
+                  />
                   <Spinner animation="grow" size="md" />
                 </div>
               ) : (
