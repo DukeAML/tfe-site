@@ -45,9 +45,9 @@ function Points() {
     let x, y, z;
 
     for (let i = 0; i < everest.length; i++) {
-      x = everest[i][0] * 2;
-      y = everest[i][1] * 2;
-      z = everest[i][2] * 2;
+      x = everest[i][0] * 1.6;
+      y = everest[i][1] * 1.5-12;
+      z = everest[i][2] * 1.6;
       points.push(x, (y - everest_min * 2) * height, z);
     }
 

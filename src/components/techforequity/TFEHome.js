@@ -42,15 +42,17 @@ class TFEHome extends React.Component {
         <Container fluid style={{ padding: 0 }}>
           <Container style={{ minHeight: '85vh', padding: `0 ${padding}%` }}>
             <center>
-              <Row style={{ marginTop: 24 }}>
-                <Col lg={4} sm={12}>
+              <Row style={{ marginTop: "12vh" }}>
+              <Col align="center">
                   <img
                     src={Logo}
                     alt="Tech For Equity"
-                    style={{ height: '15rem', margin: '2rem' }}
+                    style={{ height: '15rem' }}
                   />
                 </Col>
-                <Col lg={8} sm={12} align="left">
+              </Row>
+              <Row style={{ marginTop: 240 }}>
+              <Col lg={8} sm={12} align="left">
                   <div className="title"> Tech For Equity </div>
                   <p>
                     The Technology for Equity Fellowship, an initiative by Duke
