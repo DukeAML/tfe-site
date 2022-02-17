@@ -1,11 +1,6 @@
 import '../../../app.scss';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import {
-  Canvas,
-  extend,
-  useFrame,
-  useThree,
-} from 'react-three-fiber';
+import { Canvas, extend, useFrame, useThree } from 'react-three-fiber';
 import { Suspense, useState, useMemo, useRef, useEffect } from 'react';
 import { everest, everest_min } from './new_data';
 
@@ -52,7 +47,7 @@ function Points() {
   }, [height]);
 
   useFrame(() => {
-    setHeight(Math.min(1, height + 0.01));
+    setHeight(Math.min(1, height + 0.008));
     bufferRef.current.needsUpdate = true;
   });
 
@@ -90,7 +85,7 @@ function AnimationCanvas() {
       <Suspense fallback={null}>
         <Points />
       </Suspense>
-      <CameraControls />
+      {/*<CameraControls />*/}
     </Canvas>
   );
 }
