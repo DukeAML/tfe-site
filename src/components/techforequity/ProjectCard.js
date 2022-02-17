@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Button, Col, Card } from 'react-bootstrap';
+import { Row, Button, Card } from 'react-bootstrap';
 
 import withWindowDimensions from '../people/withWindowDimensions';
 import Person from '../projects/ProjectPerson';
@@ -111,6 +111,7 @@ class ProjectCard extends React.Component {
                   maxWidth: '48px',
                   maxHeight: '48px',
                 }}
+                alt="TFE project"
               />
             </div>
 

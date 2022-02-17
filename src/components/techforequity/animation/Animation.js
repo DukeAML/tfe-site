@@ -1,15 +1,13 @@
 import '../../../app.scss';
-import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import {
   Canvas,
   extend,
   useFrame,
-  useLoader,
   useThree,
 } from 'react-three-fiber';
 import { Suspense, useState, useMemo, useRef, useEffect } from 'react';
-import { everest, everest_max, everest_min } from './new_data';
+import { everest, everest_min } from './new_data';
 
 extend({ OrbitControls });
 
@@ -47,7 +45,7 @@ function Points() {
       x = everest[i][0] * 2;
       y = everest[i][1] * 2.6 - 42;
       z = everest[i][2] * 2;
-      if (x > 10 && x < 300) points.push(x, (y - everest_min * 2) * height, z);
+      if (x > 10) points.push(x, (y - everest_min * 2) * height, z);
     }
 
     return new Float32Array(points);

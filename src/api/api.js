@@ -12,23 +12,6 @@ if (0 && process.env.LOCAL_DEV) {
   });
 }
 
-export const getProjects = async () => {
-  const { data } = await client.get('./projects');
-  console.log(data);
-  return data;
-};
-
-export const getProjectsMembers = async () => {
-  const { data } = await client.get('./projects/people');
-  console.log(data);
-  return data;
-};
-
-export const getMembers = async () => {
-  const { data } = await client.get('./people');
-  console.log(data);
-  return data;
-};
 
 export const getTFEProjects = async () => {
   const { data } = await client.get('./techforequity');
@@ -48,25 +31,9 @@ export const getTFEFellows = async () => {
   return data;
 };
 
-export const getPapers = async () => {
-  const { data } = await client.get('./papers');
-  console.log(data);
-  return data;
-};
-
-export const getNews = async () => {
-  const { data } = await client.get('./newsentries');
-  console.log(data);
-  return data;
-};
 
 export default {
-  getProjects,
-  getProjectsMembers,
-  getPapers,
   getTFEProjects,
   getTFEExec,
   getTFEFellows,
-  getNews,
-  getMembers,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Spinner, Button } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 
 import Navigation from '../tools/Navigation';
 import Footer from '../tools/Footer';
@@ -30,8 +30,7 @@ class TFEProjects extends React.Component {
 
   render() {
     let window = this.props.windowWidth;
-    let padding,
-      renderPeople = true;
+    let padding;
 
     // dynamically determine left and right padding around projects grid
     if (window >= 992) {

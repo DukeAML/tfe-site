@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Collapse, Col, Row, Container, Grid, Fade } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import AnimateHeight from 'react-animate-height';
 
 import withWindowDimensions from './withWindowDimensions';

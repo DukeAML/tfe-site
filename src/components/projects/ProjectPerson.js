@@ -1,20 +1,10 @@
 import React from 'react';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import placeholder from './headshots/profile-placeholder.svg';
 import Icon from '../tools/Icon';
 import { Link } from 'react-router-dom';
 
 function Person(props) {
-  const github =
-    props.github != null ? <Icon type="github" href={props.github} /> : '';
-
-  const linkedin =
-    props.linkedin != null ? (
-      <Icon type="linkedin" href={props.linkedin} />
-    ) : (
-      ''
-    );
-
   let thumbnail;
   let fullImage;
 
@@ -52,11 +42,13 @@ function Person(props) {
                   filter: 'blur(2px)',
                   WebkitFilter: 'blur(2px)',
                 }}
+                alt=""
                 onClick={props.onClick}
               />
               <img
                 src={fullImage}
                 style={{ ...imageStyle }}
+                alt=""
                 onClick={props.onClick}
               />
             </Link>

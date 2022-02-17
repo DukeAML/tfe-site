@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { Link, Redirect } from 'react-router-dom';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import placeholder from './headshots/profile-placeholder.svg';
 import Icon from '../tools/Icon';
-import { OmitProps } from 'antd/lib/transfer/ListBody';
 
 function Person(props) {
   const github =
@@ -53,12 +51,14 @@ function Person(props) {
                 filter: 'blur(2px)',
                 WebkitFilter: 'blur(2px)',
               }}
+              alt=""
               onClick={props.onClick}
             />{' '}
             <img
               src={fullImage}
               style={{ ...imageStyle }}
               onClick={props.onClick}
+              alt=""
             />
           </div>
         </div>

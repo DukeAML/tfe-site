@@ -38,7 +38,8 @@ class TFEFellowship extends React.Component {
               <Row style={{ marginTop: 24 }}>
                 <div className="title"> The Tech For Equity Fellowship</div>
                 <hr />
-                <Image fluid
+                <Image
+                  fluid
                   src="./tfe-team.png"
                   alt="The TFE fellowship first cohort"
                   style={{ width: '100%', margin: '1.2rem 0' }}
@@ -75,10 +76,12 @@ class TFEFellowship extends React.Component {
                   <img
                     src="https://res.cloudinary.com/drrvlrtpl/image/upload/v1611431645/dara-logo_yf39z1.png"
                     width="175"
-                    style={{ marginRight: '20px' }}></img>
+                    style={{ marginRight: '20px' }}
+                    alt="dara's logo"></img>
                   <img
                     src="https://res.cloudinary.com/drrvlrtpl/image/upload/v1611437088/duke-law-logo_sia7tq.png"
-                    width="375"></img>
+                    width="375"
+                    alt="duke law"></img>
                 </center>
               </div>
             </div>
@@ -90,18 +93,21 @@ class TFEFellowship extends React.Component {
                 <img
                   src="https://res.cloudinary.com/drrvlrtpl/image/upload/v1611438310/duke_comp_sci_logoo_stetec.png"
                   width="230"
-                  style={{ marginRight: '20px' }}></img>
+                  style={{ marginRight: '20px' }}
+                  alt="duke compsci"></img>
               </div>
               <div class="column">
                 <img
                   src="https://res.cloudinary.com/drrvlrtpl/image/upload/v1611438033/p_rgft4c.png"
                   width="175"
-                  style={{ marginRight: '20px' }}></img>
+                  style={{ marginRight: '20px' }}
+                  alt="pratt"></img>
               </div>
               <div class="column">
                 <img
                   src="https://res.cloudinary.com/drrvlrtpl/image/upload/v1611437210/i_elogo-original_kelbsl.png"
-                  width="300"></img>
+                  width="300"
+                  alt="duke innovation"></img>
               </div>
             </div>
           </Container>
