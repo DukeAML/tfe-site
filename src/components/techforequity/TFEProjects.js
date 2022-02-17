@@ -42,13 +42,10 @@ class TFEProjects extends React.Component {
     } else if (window >= 576) {
       // s
       padding = 10;
-      renderPeople = false;
     } else {
       // xs
       padding = 10;
-      renderPeople = false;
     }
-    renderPeople &= !this.state.loadingPeople;
 
     const projectCards = this.state.projects.map((project, key) => (
       <Col
