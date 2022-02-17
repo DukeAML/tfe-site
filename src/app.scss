@@ -429,6 +429,43 @@ div.row {
   background-color: $main-white;
 }
 
+/* https://css-tricks.com/snippets/css/typewriter-effect/ */
+.typing-text {
+  display: flex;
+  justify-content: left;
+  position: absolute;
+  z-index: 10000;
+  bottom: 0;
+  left: 3rem;
+}
+.typing-text h1 {
+  overflow: hidden;
+  border-right: 0.15em solid rgb(35, 105, 51);
+  white-space: nowrap;
+  margin: 0 0;
+  letter-spacing: 0.15em;
+  font-size: 1em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  background: $main-white;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(35, 105, 51);
+  }
+}
+
 div.col-lg-1,
 div.col-lg-10,
 div.col-lg-11,

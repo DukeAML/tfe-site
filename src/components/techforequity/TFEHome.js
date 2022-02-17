@@ -6,7 +6,7 @@ import Footer from '../tools/Footer';
 
 import withWindowDimensions from '../people/withWindowDimensions';
 import Logo from '../homepage/images/techforequity.png';
-import Animation from "./animation/Animation";
+import Animation from './animation/Animation';
 
 //Tech for Equity overall Website
 class TFEHome extends React.Component {
@@ -37,22 +37,23 @@ class TFEHome extends React.Component {
 
     return (
       <div>
+        
         <Navigation />
         <Animation />
         <Container fluid style={{ padding: 0 }}>
           <Container style={{ minHeight: '85vh', padding: `0 ${padding}%` }}>
             <center>
-              <Row style={{ marginTop: "12vh" }}>
-              <Col align="center">
+              <Row style={{ marginTop: '11vh' }}>
+                <Col align="center">
                   <img
                     src={Logo}
                     alt="Tech For Equity"
-                    style={{ height: '15rem' }}
+                    style={{ height: '16rem' }}
                   />
                 </Col>
               </Row>
-              <Row style={{ marginTop: 240 }}>
-              <Col lg={8} sm={12} align="left">
+              <Row style={{ marginTop: 280 }}>
+                <Col lg={8} sm={12} align="left">
                   <div className="title"> Tech For Equity </div>
                   <p>
                     The Technology for Equity Fellowship, an initiative by Duke
