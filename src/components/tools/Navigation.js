@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import withWindowDimensions from '../people/withWindowDimensions';
 import Logo from '../homepage/images/techforequity.png';
@@ -75,14 +75,14 @@ class Navigation extends React.Component {
           }}>
           <Row
             style={{
-              padding: 0,
+              padding: 0.1,
               margin: 0,
               justifyContent: 'center',
               maxWidth: '100vw',
             }}>
             <Col xs="1" style={verticalAlign}>
               <Link to="/">
-                <img alt="Home" src={Logo} width="42" height="42" />
+                <img alt="Home" src={Logo} width="40" height="40" />
               </Link>
             </Col>
             <Col xs="2" style={verticalAlign}>

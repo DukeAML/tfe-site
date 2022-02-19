@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import withWindowDimensions from '../people/withWindowDimensions';
+import Logo from '../homepage/images/techforequity.png';
 
 class MobileNavigation extends React.Component {
   constructor() {
@@ -26,22 +27,14 @@ class MobileNavigation extends React.Component {
           style={{ padding: '.2rem 1rem' }}>
           <Navbar.Brand as={Link} to="/">
             <Link to="/" style={verticalAlign}>
-              <img
-                alt="Home"
-                src={require('../homepage/images/DAML_Full_Grey_Transparent.svg')}
-                width="50"
-                height="50"
-              />
+              <img alt="Home" src={Logo} width="40" height="40" />
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav>
-              <Nav.Link as={Link} to="/initiatives">
-                Initiatives
-              </Nav.Link>
-              <Nav.Link as={Link} to="/join">
-                Join the Team
+              <Nav.Link as={Link} to="/">
+                Home
               </Nav.Link>
               <Nav.Link as={Link} to="/projects">
                 Projects
@@ -49,8 +42,8 @@ class MobileNavigation extends React.Component {
               <Nav.Link as={Link} to="/people">
                 People
               </Nav.Link>
-              <Nav.Link as={Link} to="/courses">
-                Courses
+              <Nav.Link as={Link} to="/fellowship">
+                Fellowship
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

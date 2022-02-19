@@ -46,7 +46,7 @@ class TFEFellowship extends React.Component {
                 />
               </Row>
               <Row style={{ marginTop: 8 }}>
-                <Col lg={8} sm={12} align="left">
+                <Col  align="left">
                   <div className="title"> Tech For Equity </div>
                   <p>
                     The Technology for Equity Fellowship, an initiative by Duke
