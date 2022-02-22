@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import withWindowDimensions from '../people/withWindowDimensions';
-import Logo from '../homepage/images/techforequity.png';
 
 class MobileNavigation extends React.Component {
   constructor() {
@@ -27,7 +26,12 @@ class MobileNavigation extends React.Component {
           style={{ padding: '.2rem 1rem' }}>
           <Navbar.Brand as={Link} to="/">
             <Link to="/" style={verticalAlign}>
-              <img alt="Home" src={Logo} width="40" height="40" />
+              <img
+                alt="Home"
+                src="./techforequity.png"
+                width="40"
+                height="40"
+              />
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Button, Alert, Card } from 'react-bootstrap';
 
 import Navigation from '../tools/Navigation';
 import Footer from '../tools/Footer';
@@ -8,7 +8,11 @@ import withWindowDimensions from '../people/withWindowDimensions';
 
 //Tech for Equity overall Website
 class TFEFellowship extends React.Component {
-  state = {};
+  state = { showAlert: true };
+
+  handleAlertClose = () => {
+    this.setState({ showAlert: false });
+  };
 
   render() {
     let window = this.props.windowWidth;
@@ -17,7 +21,7 @@ class TFEFellowship extends React.Component {
     // dynamically determine left and right padding around  grid
     if (window >= 992) {
       // lg or xl
-      padding = 5;
+      padding = 8;
     } else if (window >= 768) {
       // m
       padding = 10;
@@ -32,38 +36,114 @@ class TFEFellowship extends React.Component {
     return (
       <div>
         <Navigation />
+
+        {this.state.showAlert && (
+          <Alert
+            variant="success"
+            onClose={() => this.handleAlertClose(false)}
+            dismissible
+            style={{
+              textAlign: 'center',
+              margin: 4,
+            }}>
+            <Alert.Heading>
+              Applications for Summer 2022 are now open!
+            </Alert.Heading>
+            <hr />
+            <p>Application due: March 14, 2022 at 11:59PM EST</p>
+          </Alert>
+        )}
         <Container fluid style={{ padding: 0 }}>
           <Container style={{ minHeight: '85vh', padding: `0 ${padding}%` }}>
+            <Row style={{ marginTop: 8 }}>
+              <div className="title"> Tech For Equity </div>
+              <p>
+                The Technology for Equity Fellowship, an initiative by Duke
+                Applied Machine Learning, is a summer internship program that
+                seeks to bridge the gap between enthusiastic Duke student
+                technologists and equitable organizations. The program will
+                provide students a remote tech summer internship with
+                competitive stipend at established community
+                organizations/research centers and summer programming with
+                speaker series and chances to connect with tech and policy
+                leaders at ACLU, Vera Institute of Justice, and more.
+              </p>
+            </Row>
+
+            <br />
+
+            <Row>
+              <div className="details-title"> About the Process</div>
+              <p>
+                Your first step will be submitting the Fellowship application
+                linked above. From there, you'll have a brief interview with our
+                team to discuss the areas you’re interested in and gauge
+                technical abilities. The next step will be matching you to a
+                project that closely aligns to your strengths and interests, at
+                which point we will introduce you to the team you’ll be working
+                with this summer.
+              </p>
+            </Row>
+
+            <br />
+
+            <Card style={{ border: '2px #a3a3a3 solid' }}>
+              <Card.Header>Important Dates</Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  <a style={{ fontWeight: 'bold' }}>Application due</a>: March
+                  14, 2022 at 11:59PM EST
+                </Card.Text>
+                <Card.Text>
+                  <a style={{ fontWeight: 'bold' }}>2022 Summer Fellowship</a>:
+                  May 23 - July 29, 2022
+                </Card.Text>
+              </Card.Body>
+            </Card>
+
+            <br />
+
             <center>
-              <Row style={{ marginTop: 24 }}>
-                <div className="title"> The Tech For Equity Fellowship</div>
-                <hr />
-                <Image
-                  fluid
-                  src="./tfe-team.png"
-                  alt="The TFE fellowship first cohort"
-                  style={{ width: '100%', margin: '1.2rem 0' }}
+              <Button
+                className="theme-button"
+                style={{
+                  marginBottom: '.8rem',
+                  backgroundColor: '#2e755d',
+                  width: '40%',
+                  height: '4rem',
+                }}>
+                <a
+                  href="https://airtable.com/shrTk1dz4VwidpwAc"
+                  target="_blank"
+                  style={{ color: 'white', fontSize: '1.4rem' }}>
+                  Apply to the Fellowship!
+                </a>
+              </Button>
+
+              <br />
+              <br />
+              <hr />
+              <br />
+              <br />
+
+              <Card style={{ border: '2px #a3a3a3 solid', width: '80%' }}>
+                <Card.Img
+                  variant="top"
+                  src={'./tfe-team.png'}
+                  style={{ backgroundSize: 'cover' }}
                 />
-              </Row>
-              <Row style={{ marginTop: 8 }}>
-                <Col  align="left">
-                  <div className="title"> Tech For Equity </div>
-                  <p>
-                    The Technology for Equity Fellowship, an initiative by Duke
-                    Applied Machine Learning, is a summer internship program
-                    that seeks to bridge the gap between enthusiastic Duke
-                    student technologists and equitable organizations. The
-                    program will provide students a remote tech summer
-                    internship with competitive stipend at established community
-                    organizations/research centers and summer programming with
-                    speaker series and chances to connect with tech and policy
-                    leaders at ACLU, Vera Institute of Justice, and more.
-                    <br />
-                  </p>
-                  <br />
-                </Col>
-              </Row>
+                <Card.Body>
+                  <Card.Text>The TFE Fellowship first cohort!</Card.Text>
+                </Card.Body>
+              </Card>
             </center>
+
+            <br />
+            <br />
+            <hr />
+            <br />
+            <br />
+
             <center className="title"> Sponsors </center>
             <br />
             <center> A huge thank you to all of our sponsors! </center>

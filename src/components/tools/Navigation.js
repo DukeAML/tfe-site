@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import withWindowDimensions from '../people/withWindowDimensions';
-import Logo from '../homepage/images/techforequity.png';
 import MobileNavigation from './MobileNavigation';
 
 class Navigation extends React.Component {
@@ -82,7 +81,12 @@ class Navigation extends React.Component {
             }}>
             <Col xs="1" style={verticalAlign}>
               <Link to="/">
-                <img alt="Home" src={Logo} width="40" height="40" />
+                <img
+                  alt="Home"
+                  src="./techforequity.png"
+                  width="40"
+                  height="40"
+                />
               </Link>
             </Col>
             <Col xs="2" style={verticalAlign}>

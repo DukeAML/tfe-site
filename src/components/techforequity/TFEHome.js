@@ -5,7 +5,6 @@ import Navigation from '../tools/Navigation';
 import Footer from '../tools/Footer';
 
 import withWindowDimensions from '../people/withWindowDimensions';
-import Logo from '../homepage/images/techforequity.png';
 import Animation from './animation/Animation';
 
 //Tech for Equity overall Website
@@ -52,7 +51,7 @@ class TFEHome extends React.Component {
               <Row style={{ marginTop: '11vh' }}>
                 <Col align="center">
                   <img
-                    src={Logo}
+                    src="./techforequity_text.png"
                     alt="Tech For Equity"
                     style={{ height: '16rem' }}
                   />
@@ -72,6 +71,19 @@ class TFEHome extends React.Component {
                     speaker series and chances to connect with tech and policy
                     leaders at ACLU, Vera Institute of Justice, and more.
                   </p>
+                  <Button
+                    className="theme-button"
+                    style={{
+                      marginBottom: '.6rem',
+                      backgroundColor: '#2e755d',
+                    }}>
+                    <a
+                      href="https://airtable.com/shrTk1dz4VwidpwAc"
+                      target="_blank"
+                      style={{ color: 'white' }}>
+                      Apply to the Fellowship!
+                    </a>
+                  </Button>
                 </Col>
               </Row>
               <Row style={{ marginTop: 24 }}>
@@ -127,38 +139,6 @@ class TFEHome extends React.Component {
                     </a>
                   </Button>
                 </Col>
-              </Row>
-              <Row
-                style={{
-                  padding: 12,
-                  border: '2px solid #232323',
-                  marginTop: 24,
-                }}
-                align="left">
-                <div className="details-title"> The TFE Fellowship </div>
-                <p style={{ lineHeight: 1.6 }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
-                <Button
-                  className="theme-button"
-                  style={{
-                    marginBottom: '.8rem',
-                    backgroundColor: '#2e755d',
-                  }}>
-                  <a
-                    href="https://airtable.com/shrTk1dz4VwidpwAc"
-                    target="_blank"
-                    style={{ color: 'white' }}>
-                    Apply to the Fellowship!
-                  </a>
-                </Button>
               </Row>
             </center>
             <center className="title" style={{ marginTop: 24 }}>
