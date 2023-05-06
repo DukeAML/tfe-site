@@ -20,12 +20,10 @@ class TFEPeople extends React.Component {
   };
 
   componentDidMount = async () => {
-    // Load and update projects
     const projects = await getTFEProjects();
     console.log(projects);
     this.setState({ projects: projects, loadingProjects: false });
 
-    // Load, clean, and update exec team
     const exec = await getTFEExec();
     let pkey = {
       Headshot: 'Photo',
@@ -37,16 +35,14 @@ class TFEPeople extends React.Component {
     });
     this.setState({ exec: exec, loadingExec: false });
 
-    // Load, append, and update fellows
     const fellows = await getTFEFellows();
 
-    // Projects as key value
     let projectTable = {};
     projects.forEach((project) => {
       projectTable[project.id] = project.Project_Title;
     });
     console.log(fellows);
-    // Add project to user description
+
     fellows.forEach((fellow) => {
       for (const [key, val] of Object.entries(fellow)) {
         fellow[pkey[key] || key] = val;
@@ -57,9 +53,7 @@ class TFEPeople extends React.Component {
     this.setState({ fellows: fellows, loadingFellows: false });
   };
 
-  // From ../people/PeoplePage.js
   makePeopleGrid(people, window) {
-    // determine number of people per row based on bootstrap screen breakpoints
     let cols;
     if (window >= 992) {
       // lg or xl; 4 people per row
@@ -78,14 +72,13 @@ class TFEPeople extends React.Component {
     const numRows = Math.ceil(people.length / cols);
     let rowArrays = [];
 
-    // make each row, add details section below
     for (let i = 0; i < numRows * cols; i += cols) {
       rowArrays[i] = people.slice(i, i + cols);
     }
-
-    let result = rowArrays.map((row, index) => (
-      <PeopleRow people={row} key={index} />
-    ));
+    
+    // TODO !!!
+    // Create an array of PeopleRow components using the contents of rowArrays
+    // w attributes: people={row} key={index}
 
     return this.state.loadingFellows ? (
       <div style={{ height: '10rem', padding: '2rem', margin: 'auto' }}>
@@ -102,7 +95,6 @@ class TFEPeople extends React.Component {
     let window = this.props.windowWidth;
     let padding;
 
-    // dynamically determine left and right padding around projects grid
     if (window >= 992) {
       // lg or xl
       padding = 5;
